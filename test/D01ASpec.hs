@@ -14,3 +14,5 @@ spec = do
             requiredFuel 12 `shouldBe` 2
         it "For a mass of 1969, should be 654" $ do
             requiredFuel 1969 `shouldBe` 654
+        it "For a mass of 100756 should be 33583" $ do
+            requiredFuel 100756 `shouldBe` 33583
