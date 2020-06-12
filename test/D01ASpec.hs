@@ -16,3 +16,8 @@ spec = do
             requiredFuel 1969 `shouldBe` 654
         it "For a mass of 100756 should be 33583" $ do
             requiredFuel 100756 `shouldBe` 33583
+
+    describe "total required fuel" $ do
+        it "for modules of mass 12, 1969 and 100756 should be 33583+654+2" $ do
+            let modules = [12,1969, 100756]
+            totalRequiredFuel modules `shouldBe` 33583+654+2
