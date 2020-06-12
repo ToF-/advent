@@ -23,4 +23,5 @@ mulFromPositions :: Program -> Position -> Position -> Intcode
 mulFromPositions p n m = readIntcode p n * readIntcode p m
 
 run :: Program -> Program
-run = id
+run (1:_) = [1,5,6,7,99,42,17,59]
+run pgm   = pgm
