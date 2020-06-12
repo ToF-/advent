@@ -15,3 +15,8 @@ spec = do
             let p'= writeIntcode p 11 70
 
             p' `shouldBe`  intcode [0,9,10,3,2,3,11,0,99,30,40,70]
+
+        it "can add values from two positions" $ do
+            let p = intcode [0,9,10,3,2,3,11,0,99,30,40,50]
+            addFromPositions p 9 10 `shouldBe` 70
+
