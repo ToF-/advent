@@ -21,3 +21,6 @@ addFromPositions p n m = readIntcode p n + readIntcode p m
 
 mulFromPositions :: Program -> Position -> Position -> Intcode
 mulFromPositions p n m = readIntcode p n * readIntcode p m
+
+run :: Program -> Program
+run = id
