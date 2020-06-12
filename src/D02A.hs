@@ -12,5 +12,6 @@ readIntcode :: Program -> Position -> Intcode
 readIntcode = (!!)
 
 writeIntcode :: Program -> Position -> Intcode -> Program
+writeIntcode [] _ _ = error "position beyond program length"
 writeIntcode pgm 0 code = code : tail pgm
 writeIntcode pgm n code = (head pgm) : writeIntcode (tail pgm) (pred n) code
