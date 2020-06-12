@@ -12,3 +12,5 @@ spec = do
     describe "required fuel" $ do
         it "for a mass of 12 should be 2" $ do
             requiredFuel 12 `shouldBe` 2
+        it "For a mass of 1969, should be 654" $ do
+            requiredFuel 1969 `shouldBe` 654
