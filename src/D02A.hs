@@ -34,6 +34,6 @@ runAt pgm pos = pgm
 perform :: Program -> Position -> (Program -> Position -> Position -> Intcode) -> Program
 perform pgm pos op = writeIntcode pgm c (op pgm a b)
     where
-        a = readIntcode pgm 1
-        b = readIntcode pgm 2
-        c = readIntcode pgm 3
+        a = readIntcode pgm (succ pos)
+        b = readIntcode pgm (succ (succ pos))
+        c = readIntcode pgm (succ (succ (succ pos)))
