@@ -29,7 +29,10 @@ run pgm   = runAt pgm 0
 runAt :: Program -> Position -> Program
 runAt pgm p = case readIntcode pgm p of
                 99 -> pgm
-                1  -> perform pgm p addFromPositions
+                1  -> runAt pgm' p'
+                    where
+                        pgm' = perform pgm p addFromPositions
+                        p'   = p+4
                 2  -> perform pgm p mulFromPositions
 
 perform :: Program -> Position -> (Program -> Position -> Position -> Intcode) -> Program
