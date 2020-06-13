@@ -79,4 +79,6 @@ spec = do
             it "addition in place" $ do
                 run (intcode [1,0,0,0,99]) `shouldBe` [2,0,0,0,99]
 
+            it "using opcodes" $ do
+                run (intcode [2,4,4,5,99,0])  `shouldBe` [2,4,4,5,99,9801]
 
