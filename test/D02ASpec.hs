@@ -46,4 +46,14 @@ spec = do
                     let p = intcode [2,5,6,7,99,42,17,00]
                     run p `shouldBe` [2,5,6,7,99,42,17,714]
 
+            it "chaining operations" $ do
+                let p = intcode [1,09,10,11
+                                ,2,09,10,12
+                                ,99
+                                ,42,17,00,00]
+                run p `shouldBe` [1,09,10,11
+                                 ,2,09,10,12
+                                 ,99
+                                 ,42,17,59,714]
+
 
