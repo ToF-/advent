@@ -32,3 +32,6 @@ spec = do
             it "performing an addition" $ do
                 let p = intcode [1,5,6,7,99,42,17,00]
                 run p `shouldBe` [1,5,6,7,99,42,17,59]
+
+                let q = intcode [1,5,6,7,99,10,20,00]
+                run q `shouldBe` [1,5,6,7,99,10,20,30]
