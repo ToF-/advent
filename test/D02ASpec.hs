@@ -29,9 +29,11 @@ spec = do
                 let p = intcode [99,9,10,3,2,3,11,0,99,30,40,50]
                 run p `shouldBe` [99,9,10,3,2,3,11,0,99,30,40,50]
 
-            it "performing an addition" $ do
-                let p = intcode [1,5,6,7,99,42,17,00]
-                run p `shouldBe` [1,5,6,7,99,42,17,59]
+            describe "performing an addition" $ do
+                it "between any number" $ do
+                    let p = intcode [1,5,6,7,99,42,17,00]
+                    run p `shouldBe` [1,5,6,7,99,42,17,59]
 
-                let q = intcode [1,5,6,7,99,10,20,00]
-                run q `shouldBe` [1,5,6,7,99,10,20,30]
+                it "in two position" $ do
+                    let q = intcode [1,5,6,7,99,10,20,00]
+                    run q `shouldBe` [1,5,6,7,99,10,20,30]
