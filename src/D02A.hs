@@ -27,14 +27,17 @@ run pgm | length pgm == 13 =[1,09,10,11 ,2,09,10,12 ,99 ,42,17,59,714]
 run pgm   = runAt pgm 0
 
 runAt :: Program -> Position -> Program
-runAt pgm@(1:_) 0 = writeIntcode pgm c (addFromPositions pgm a b)
-    where
-        a = readIntcode pgm 1
-        b = readIntcode pgm 2
-        c = readIntcode pgm 3
+runAt pgm@(1:_) 0 = perform pgm 0 addFromPositions
 runAt pgm@(2:_) 0 = writeIntcode pgm c (mulFromPositions pgm a b)
     where
         a = readIntcode pgm 1
         b = readIntcode pgm 2
         c = readIntcode pgm 3
 runAt pgm pos = pgm
+
+perform :: Program -> Position -> (Program -> Position -> Position -> Intcode) -> Program
+perform pgm pos op = writeIntcode pgm c (op pgm a b)
+    where
+        a = readIntcode pgm 1
+        b = readIntcode pgm 2
+        c = readIntcode pgm 3
