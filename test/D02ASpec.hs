@@ -65,6 +65,16 @@ spec = do
                                      ,1,09,10,12
                                      ,99
                                      ,42,17,714,59]
+        describe "other examples" $ do
+            it "rewriting initial position" $ do
+                let p = intcode [ 1,9,10,3
+                                , 2,3,11,0
+                                , 99
+                                , 30,40,50]
+                run p `shouldBe` [3500,9,10,70
+                                 , 2,3,11,0
+                                 , 99
+                                 , 30,40,50]
 
 
 
