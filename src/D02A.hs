@@ -29,10 +29,6 @@ run pgm   = runAt pgm 0
 runAt :: Program -> Position -> Program
 runAt pgm@(1:_) 0 = perform pgm 0 addFromPositions
 runAt pgm@(2:_) 0 = perform pgm 0 mulFromPositions
-    where
-        a = readIntcode pgm 1
-        b = readIntcode pgm 2
-        c = readIntcode pgm 3
 runAt pgm pos = pgm
 
 perform :: Program -> Position -> (Program -> Position -> Position -> Intcode) -> Program
