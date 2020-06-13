@@ -26,4 +26,7 @@ run :: Program -> Program
 run pgm | length pgm == 13 =[1,09,10,11 ,2,09,10,12 ,99 ,42,17,59,714]
 run pgm@(1:a:b:c:_) = writeIntcode pgm c (addFromPositions pgm a b)
 run pgm@(2:a:b:c:_) = writeIntcode pgm c (mulFromPositions pgm a b)
-run pgm   = pgm
+run pgm   = runAt pgm 0
+
+runAt :: Program -> Position -> Program
+runAt pgm pos = pgm
