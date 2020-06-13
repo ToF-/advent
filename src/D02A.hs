@@ -32,7 +32,10 @@ runAt pgm p = case readIntcode pgm p of
                     where
                         pgm' = perform pgm p addFromPositions
                         p'   = p+4
-                2  -> perform pgm p mulFromPositions
+                2  -> runAt pgm' p'
+                    where
+                        pgm' = perform pgm p mulFromPositions
+                        p'   = p+4
 
 perform :: Program -> Position -> (Program -> Position -> Position -> Intcode) -> Program
 perform pgm pos op = writeIntcode pgm c (op pgm a b)
