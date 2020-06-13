@@ -35,5 +35,11 @@ spec = do
                     run p `shouldBe` [1,5,6,7,99,42,17,59]
 
                 it "in two position" $ do
-                    let q = intcode [1,5,6,7,99,10,20,00]
-                    run q `shouldBe` [1,5,6,7,99,10,20,30]
+                    let p = intcode [1,5,6,7,99,10,20,00]
+                    run p `shouldBe` [1,5,6,7,99,10,20,30]
+
+
+                it "in any position" $ do
+                    let p = intcode [1,6,7,8,99,00,10,20,00]
+                    run p `shouldBe` [1,6,7,8,99,00,10,20,30]
+

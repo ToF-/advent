@@ -23,5 +23,5 @@ mulFromPositions :: Program -> Position -> Position -> Intcode
 mulFromPositions p n m = readIntcode p n * readIntcode p m
 
 run :: Program -> Program
-run pgm@(1:_) = writeIntcode pgm 7 (addFromPositions pgm 5 6)
+run pgm@(1:a:b:c:_) = writeIntcode pgm c (addFromPositions pgm a b)
 run pgm   = pgm
