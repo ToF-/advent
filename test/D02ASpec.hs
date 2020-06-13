@@ -76,5 +76,7 @@ spec = do
                                  , 99
                                  , 30,40,50]
 
+            it "addition in place" $ do
+                run (intcode [1,0,0,0,99]) `shouldBe` [2,0,0,0,99]
 
 
