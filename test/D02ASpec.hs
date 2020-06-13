@@ -38,7 +38,6 @@ spec = do
                     let p = intcode [1,5,6,7,99,10,20,00]
                     run p `shouldBe` [1,5,6,7,99,10,20,30]
 
-
                 it "in any position" $ do
                     let p = intcode [1,6,7,8,99,00,10,20,00]
                     run p `shouldBe` [1,6,7,8,99,00,10,20,30]
