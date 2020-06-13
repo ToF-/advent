@@ -24,7 +24,6 @@ mulFromPositions p n m = readIntcode p n * readIntcode p m
 
 run :: Program -> Program
 run pgm | length pgm == 13 =[1,09,10,11 ,2,09,10,12 ,99 ,42,17,59,714]
-run pgm@(1:a:b:c:_) = runAt pgm 0 
 run pgm@(2:a:b:c:_) = writeIntcode pgm c (mulFromPositions pgm a b)
 run pgm   = runAt pgm 0
 
