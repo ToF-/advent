@@ -27,6 +27,7 @@ run pgm | length pgm == 13 =[1,09,10,11 ,2,09,10,12 ,99 ,42,17,59,714]
 run pgm   = runAt pgm 0
 
 runAt :: Program -> Position -> Program
+runAt pgm@(99:_) p = pgm
 runAt pgm@(1:_) p = perform pgm p addFromPositions
 runAt pgm@(2:_) p = perform pgm p mulFromPositions
 runAt pgm pos = pgm
