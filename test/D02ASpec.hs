@@ -12,7 +12,7 @@ spec = do
 
         it "can be written at a position" $ do
             let p = intcode [1,9,10,3,2,3,11,0,99,30,40,50]
-            let p'= writeIntcode p 11 70
+            let p'=  (p ~! 11) 70
 
             p' `shouldBe`  intcode [1,9,10,3,2,3,11,0,99,30,40,70]
 
