@@ -7,8 +7,8 @@ spec = do
     describe "Intcode programs" $ do
         it "can be read at a position" $ do
             let p = intcode [1,9,10,3,2,3,11,0,99,30,40,50]
-            readIntcode p 9 `shouldBe` 30
-            readIntcode p 10 `shouldBe` 40
+            p !! 9 `shouldBe` 30
+            p !! 10 `shouldBe` 40
 
         it "can be written at a position" $ do
             let p = intcode [1,9,10,3,2,3,11,0,99,30,40,50]
