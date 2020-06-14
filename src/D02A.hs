@@ -16,6 +16,10 @@ writeIntcode [] _ _ = error "position beyond program length"
 writeIntcode pgm 0 code = code : tail pgm
 writeIntcode pgm n code = (head pgm) : writeIntcode (tail pgm) (pred n) code
 
+infix 6 ~!
+(~!) :: Program -> Position -> (Intcode -> Program)
+pgm ~! p = writeIntcode pgm p
+
 addFromPositions :: Program -> Position -> Position -> Intcode
 addFromPositions p n m = p !! n + p !! m
 
