@@ -18,7 +18,7 @@ spec = do
 
         it "can add values from two positions" $ do
             let p = intcode [1,9,10,3,2,3,11,0,99,30,40,50]
-            add_ p 9 10 `shouldBe` 70
+            addMem p 9 10 `shouldBe` 70
 
         it "can multiply values from two positions" $ do
             let p = intcode [1,9,10,3,2,3,11,0,99,30,40,50]

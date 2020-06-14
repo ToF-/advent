@@ -20,8 +20,8 @@ infix 6 ~!
 (~!) :: Program -> Position -> (Intcode -> Program)
 pgm ~! p = writeIntcode pgm p
 
-add_ :: Program -> Position -> Position -> Intcode
-add_ p n m = p !! n + p !! m
+addMem :: Program -> Position -> Position -> Intcode
+addMem p n m = p !! n + p !! m
 
 mulFromPositions :: Program -> Position -> Position -> Intcode
 mulFromPositions p n m = p !! n * p !! m
@@ -34,7 +34,7 @@ runAt pgm p = case readIntcode pgm p of
                 99 -> pgm
                 1  -> runAt pgm' p'
                     where
-                        pgm' = perform pgm p add_
+                        pgm' = perform pgm p addMem
                         p'   = p+4
                 2  -> runAt pgm' p'
                     where
