@@ -23,8 +23,8 @@ pgm ~! p = writeIntcode pgm p
 addMem :: Program -> Position -> Position -> Intcode
 addMem p n m = p !! n + p !! m
 
-mulFromPositions :: Program -> Position -> Position -> Intcode
-mulFromPositions p n m = p !! n * p !! m
+mulMem :: Program -> Position -> Position -> Intcode
+mulMem p n m = p !! n * p !! m
 
 run :: Program -> Program
 run pgm   = runAt pgm 0
@@ -38,7 +38,7 @@ runAt pgm p = case readIntcode pgm p of
                         p'   = p+4
                 2  -> runAt pgm' p'
                     where
-                        pgm' = perform pgm p mulFromPositions
+                        pgm' = perform pgm p mulMem
                         p'   = p+4
 
 perform :: Program -> Position -> (Program -> Position -> Position -> Intcode) -> Program
